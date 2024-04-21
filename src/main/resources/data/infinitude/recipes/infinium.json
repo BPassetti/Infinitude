@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 1,
+  "group": "infinium",
+  "ingredient": {
+    "item": "infinitude:infinium_ore_block"
+  },
+  "result": "infinitude:infinium"
+}
