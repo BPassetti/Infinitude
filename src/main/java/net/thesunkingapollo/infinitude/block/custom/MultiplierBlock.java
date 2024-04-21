@@ -27,8 +27,8 @@ import org.jetbrains.annotations.Nullable;
 public class MultiplierBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    protected MultiplierBlock(Properties p_49224_) {
-        super(p_49224_);
+    public MultiplierBlock(Properties properties) {
+        super(properties);
     }
 
     private static final VoxelShape SHAPE =
@@ -61,13 +61,13 @@ public class MultiplierBlock extends BaseEntityBlock {
 
 
 
-    /*  Everything under this comment is Block Entity Things  */
+    /* BLOCK ENTITY */
 
-    @Override
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
     }
 
+    @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
@@ -101,7 +101,9 @@ public class MultiplierBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.MULTIPLIER_STATION.get(), MultiplierBlockEntity::tick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
+                                                                  BlockEntityType<T> type) {
+        return createTickerHelper(type, ModBlockEntities.MULTIPLIER_STATION.get(),
+                MultiplierBlockEntity::tick);
     }
 }

@@ -16,8 +16,7 @@ public class ModMenuTypes{
 
     public static final RegistryObject<MenuType<MultiplierMenu>> MULTIPLIER_MENU = registerMenuType(MultiplierMenu::new, "multiplier_menu");
 
-    private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
-                                                                                                  String name) {
+    private static <T extends AbstractContainerMenu> RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory, String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }
 

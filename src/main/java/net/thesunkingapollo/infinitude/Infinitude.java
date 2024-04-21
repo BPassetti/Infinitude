@@ -2,6 +2,8 @@ package net.thesunkingapollo.infinitude;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,7 +24,6 @@ import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(Infinitude.MOD_ID)
-
 public class Infinitude
 {
     public static final String MOD_ID = "infinitude";
@@ -31,30 +32,29 @@ public class Infinitude
     public Infinitude()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+
         ModItems.register(modEventBus);
-        modEventBus.addListener(this::commonSetup);
-        MinecraftForge.EVENT_BUS.register(this);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
         ModBlocks.register(modEventBus);
 
-
         ModBlockEntities.register(modEventBus);
-
-
         ModMenuTypes.register(modEventBus);
 
+        modEventBus.addListener(this::commonSetup);
 
+        MinecraftForge.EVENT_BUS.register(this);
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         ModMessages.register();
     }
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
+
+    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientModEvents {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)  {
+        public static void onClientSetup(FMLClientSetupEvent event) {
 
             MenuScreens.register(ModMenuTypes.MULTIPLIER_MENU.get(), MultiplierScreen::new);
         }

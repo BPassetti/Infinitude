@@ -10,29 +10,29 @@ import net.minecraft.world.entity.player.Inventory;
 import net.thesunkingapollo.infinitude.Infinitude;
 
 public class MultiplierScreen extends AbstractContainerScreen<MultiplierMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Infinitude.MOD_ID, "textures/gui/multipliergui.png");
-
-
-    public MultiplierScreen(MultiplierMenu menu, Inventory inventory, Component component) {
-        super(menu, inventory, component);
-    }
+    private static final ResourceLocation TEXTURE =
+            new ResourceLocation(Infinitude.MOD_ID, "textures/gui/multipliergui.png");
 
     @Override
     protected void init() {
         super.init();
     }
 
+    public MultiplierScreen(MultiplierMenu menu, Inventory inventory, Component component) {
+        super(menu, inventory, component);
+    }
+
     @Override
     protected void renderBg(PoseStack pPoseStack, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-        RenderSystem.setShaderTexture(0, TEXTURE);
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
+        RenderSystem.setShaderTexture(0, TEXTURE);
 
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
-        renderProgressArrow(pPoseStack, x, y);
 
+        renderProgressArrow(pPoseStack, x, y);
     }
 
     private void renderProgressArrow(PoseStack pPoseStack, int x, int y) {
@@ -42,9 +42,9 @@ public class MultiplierScreen extends AbstractContainerScreen<MultiplierMenu> {
     }
 
     @Override
-    public void render(PoseStack pPoseStack, int MouseX, int MouseY, float delta){
+    public void render(PoseStack pPoseStack, int mouseX, int mouseY, float delta) {
         renderBackground(pPoseStack);
-        super.render(pPoseStack, MouseX, MouseY, delta);
-        renderTooltip(pPoseStack, MouseX, MouseY);
+        super.render(pPoseStack, mouseX, mouseY, delta);
+        renderTooltip(pPoseStack, mouseX, mouseY);
     }
 }
