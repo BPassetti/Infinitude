@@ -13,6 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.thesunkingapollo.infinitude.Infinitude;
+import net.thesunkingapollo.infinitude.block.custom.MultiplierBlock;
 import net.thesunkingapollo.infinitude.item.ModCreativeModTab;
 import net.thesunkingapollo.infinitude.item.ModItems;
 
@@ -24,7 +25,7 @@ public class ModBlocks {
 
     /* Place your blocks between here*/
 
-    public static final RegistryObject<Block> MULTIPLIER_BLOCK = registerBlock("multiplier_block", () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+    public static final RegistryObject<Block> MULTIPLIER_BLOCK = registerBlock("multiplier_block", () -> new MultiplierBlock(BlockBehaviour.Properties.of(Material.STONE)
             .strength(6F)
             .requiresCorrectToolForDrops()), ModCreativeModTab.INFINITUDE_TAB);
 
