@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 public class MultiplierBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
-    protected MultiplierBlock(Properties p_49224_) {
+    public MultiplierBlock(Properties p_49224_) {
         super(p_49224_);
     }
 
